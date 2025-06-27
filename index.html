@@ -4,17 +4,45 @@
 <head>
   <title>Form Validation</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="./jquery.js"></script>
-  <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+  <!-- <script src="https://kit.fontawesome.com/b3a1302b55.js" crossorigin="anonymous"></script> -->
+  <!-- <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script> -->
+
 </head>
 
 <body>
-  <div class="form">
-    <input type="text">
-    <input type="submit" value="">
+  <div class="container">
+
+    <p id="message"></p>
+
+    <p id="heading">Fill the Form</p>
+
+    <div id="email" class="inputContainer">
+      <label for="email">Email-id</label>
+      <input type="text" name="email" id="emailInput">
+    </div>
+
+    <div id="phoneNumber" class="inputContainer">
+      <label for="phoneNumber">Phone Number</label>
+      <input type="text" name="phoneNumber" id="phoneNumberInput" maxlength="10">
+    </div>
+
+    <div id="password" class="inputContainer">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="passInput">
+    </div>
+
+    <div id="confirmPassword" class="inputContainer">
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" name="confirmPassword" id="confirmInput">
+    </div>
+
+    <input type="submit" id="submitInput">
+
+    <button id="hideBtn1" class="hideBtn"><i class="fa-regular fa-eye"></i></button>
+
+    <button id="hideBtn2" class="hideBtn"><i class="fa-regular fa-eye"></i></button>
+
   </div>
-
-
   <script src="./script.js"></script>
 </body>
 

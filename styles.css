@@ -1,0 +1,95 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+.container {
+  width: 560px;
+  height: 700px;
+  display: flex;
+  margin: 40px auto;
+  align-items: center;
+  border-radius: 5px;
+  flex-direction: column;
+  border: 6px double black;
+}
+
+.message {
+  width: 100%;
+  font: 1em sans-serif;
+  color: rgb(240, 59, 59);
+  background-color: rgb(212, 157, 151);
+}
+
+#heading {
+  font-size: 2.1em ;
+  font-weight: 500;
+  margin-top: 35px;
+}
+
+.inputContainer {
+  margin-top: 35px;
+  width: 500px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+label {
+  font-size: 1.3em;
+}
+
+input {
+  border: 2px solid black;
+  border-radius: 7px;
+  height: 40px;
+  width: 275px;
+}
+
+#submitInput {
+  position: relative;
+  top: 150px;
+  left: 182px;
+  width: 125px;
+  height: 35px;
+  font-size: 1.3em;
+  background-color: rgb(56, 159, 233);
+  margin-top: 50px;
+}
+
+#submitInput:hover {
+  cursor: pointer;
+  background-color: rgb(0, 115, 255);
+}
+
+#submitInput:active {
+  background-color: rgb(43, 150, 227);
+}
+
+.hideBtn {
+  border: none;
+  font: 1.1em sans-serif;
+  background-color: white;
+}
+
+#hideBtn1 {
+  left: 227px;
+  bottom: 210px;
+  position: relative;
+}
+
+#hideBtn2 {
+  left: 227px;
+  bottom: 144px;
+  position: relative;
+}
+
+.hideBtn:hover {
+  cursor: pointer;
+}
