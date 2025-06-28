@@ -1,95 +1,71 @@
-* {
-  box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+*{
   margin: 0;
   padding: 0;
+  font-family: Poppins;
+  box-sizing: border-box;
 }
 
 body {
-  font-family:Arial, Helvetica, sans-serif;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
 }
 
-.container {
-  width: 560px;
-  height: 700px;
-  display: flex;
-  margin: 40px auto;
-  align-items: center;
-  border-radius: 5px;
-  flex-direction: column;
-  border: 6px double black;
+#form {
+  width: 400px;
+  margin: 15vh auto 0 auto;
+  padding: 20px;
+  background-color: whitesmoke;
+  border-radius: 4px;
+  font-size: 15px;
 }
 
-.message {
-  width: 100%;
-  font: 1em sans-serif;
-  color: rgb(240, 59, 59);
-  background-color: rgb(212, 157, 151);
+#form h1{
+  color: #0f2027;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-#heading {
-  font-size: 2.1em ;
-  font-weight: 500;
-  margin-top: 35px;
-}
-
-.inputContainer {
-  margin-top: 35px;
-  width: 500px;
-  padding: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-label {
-  font-size: 1.3em;
-}
-
-input {
-  border: 2px solid black;
-  border-radius: 7px;
-  height: 40px;
-  width: 275px;
-}
-
-#submitInput {
-  position: relative;
-  top: 150px;
-  left: 182px;
-  width: 125px;
-  height: 35px;
-  font-size: 1.3em;
-  background-color: rgb(56, 159, 233);
-  margin-top: 50px;
-}
-
-#submitInput:hover {
-  cursor: pointer;
-  background-color: rgb(0, 115, 255);
-}
-
-#submitInput:active {
-  background-color: rgb(43, 150, 227);
-}
-
-.hideBtn {
+#form button {
+  width: 30%;
   border: none;
-  font: 1.1em sans-serif;
-  background-color: white;
+  padding: 10px;
+  color:white;
+  display: block;
+  border-radius: 4px;
+  margin: 10px auto 0 auto;
+  background-color: rgb(41, 57, 194);
 }
 
-#hideBtn1 {
-  left: 227px;
-  bottom: 210px;
-  position: relative;
+.inputControl {
+  display: flex;
+  flex-direction: column;
 }
 
-#hideBtn2 {
-  left: 227px;
-  bottom: 144px;
-  position: relative;
+.inputControl input {
+  width: 100%;
+  padding: 10px;
+  display: block;
+  font-size: 12px;
+  margin-top: 2px;
+  border-radius: 4px;
+  border: 2px solid #f0f0f0;
 }
 
-.hideBtn:hover {
-  cursor: pointer;
+.inputControl input:focus {
+  outline: 0;
+}
+
+.inputControl.success input {
+border-color: #09c372;
+}
+
+.inputControl.error input {
+border-color: #ff3860;
+}
+
+.inputControl .error {
+  height: 16px;
+  font-size: 10px;
+  color: #ff3860;
 }
