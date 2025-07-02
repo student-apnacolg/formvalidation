@@ -12,29 +12,33 @@
 
 <body>
   <div class="container">
-    <form id="form" action="/">
+    <form id="form" action="/" novalidate>
       <h1>Form Validation</h1>
+
       <div class="inputControl">
         <label for="email">Email-Address</label>
-        <input type="text" name="email" id="email">
-        <div class="error"></div>
+        <input type="text" name="email" id="email" required>
+        <div class="messages"></div>
       </div>
       <div class="inputControl">
         <label for="phone">Phone Number</label>
-        <input type="text" name="phoneNumber" id="phone">
-        <div class="error"></div>
+        <input type="text" name="phoneNumber" id="phone" maxlength="10" pattern="\\d{10}" required>
+        <div class="messages"></div>
       </div>
-      <div class="inputControl">
+      <div class="inputControl passWrapper">
         <label for="password">Password</label>
-        <input type="password" name="password" id="password">
-        <div class="error"></div>
+        <input type="password" name="password" id="password" required>
+        <i class="fa-solid fa-eye passToggle" title="Show Password"></i>
+        <div class="messages"></div>
       </div>
-      <div class="inputControl">
+      <div class="inputControl passWrapper">
         <label for="confirmPassword">Confirm Password</label>
-        <input type="password" name="confirmPassword" id="confirmPassword">
-        <div class="error"></div>
+        <input type="password" name="confirmPassword" id="confirmPassword" required>
+        <i class="fa-solid fa-eye passToggle" title="Show Password"></i>
+        <div class="messages"></div>
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit" id="submitBtn">Submit</button>
+      <div id="formMsg"></div>
     </form>
   </div>
 

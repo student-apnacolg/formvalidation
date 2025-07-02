@@ -1,71 +1,130 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
 
-*{
-  margin: 0;
-  padding: 0;
-  font-family: Poppins;
+/* Basic Reset & Layout */
+* {
   box-sizing: border-box;
+  margin: 0;
+  font-family: Poppins;
+  padding: 0;
 }
 
 body {
-  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #0b223a;
 }
 
-#form {
-  width: 400px;
-  margin: 15vh auto 0 auto;
-  padding: 20px;
-  background-color: whitesmoke;
-  border-radius: 4px;
-  font-size: 15px;
-}
-
-#form h1{
-  color: #0f2027;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-#form button {
-  width: 30%;
-  border: none;
+.container {
+  width: 425px;
+  height: 650px;
   padding: 10px;
-  color:white;
-  display: block;
-  border-radius: 4px;
-  margin: 10px auto 0 auto;
-  background-color: rgb(41, 57, 194);
+  border-radius: 5px;
+  background-color:#ddd;
+}
+
+form {
+  height: 100%;
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ddd;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 1.5em;
+  color: #333;
 }
 
 .inputControl {
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.inputControl label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+  font-size: 0.95em;
 }
 
 .inputControl input {
   width: 100%;
-  padding: 10px;
-  display: block;
-  font-size: 12px;
-  margin-top: 2px;
-  border-radius: 4px;
-  border: 2px solid #f0f0f0;
+  padding: 10px; 
+  font-size: 0.95em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .inputControl input:focus {
-  outline: 0;
+  border-color: #007bff;
+  outline: none;
 }
 
-.inputControl.success input {
-border-color: #09c372;
+/* Show/hide icon for password */
+.passWrapper {
+  position: relative;
 }
 
+.passWrapper .passToggle {
+  top: 43px;
+  right: 13px;
+  color: #888;
+  font-size: 1em;
+  cursor: pointer;
+  position: absolute;
+}
+
+.passWrapper .passToggle:hover {
+  color: #555;
+}
+
+/* Message styling */
+.messages {
+  margin-top: 3px;
+  font-size: 0.8em;
+  min-height: 18px;
+}
+
+#formMsg {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 0.95em;
+}
+
+/* Button styling */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  font-size: 1em;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Error states */
 .inputControl.error input {
-border-color: #ff3860;
+  border-color: #e74c3c;
 }
 
-.inputControl .error {
-  height: 16px;
-  font-size: 10px;
-  color: #ff3860;
+.inputControl.error .messages {
+  color: #e74c3c;
+}
+
+/* Success message style */
+#formMsg.success {
+  color: #2ecc71;
+}
+
+#formMsg.error {
+  color: #e74c3c;
 }

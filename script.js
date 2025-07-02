@@ -1,71 +1,79 @@
-const form = document.getElementById('form');
-const email = document.getElementById('email');
-const phone = document.getElementById('phone');
-const pass = document.getElementById('password');
-const confirm = document.getElementById('confirmPassword');
+document.addEventListener('DOMContentLoaded', () => {
+  const form        = document.getElementById('form');
+  const formMsg     = document.getElementById('formMsg');
+  const passToggles = document.querySelectorAll('.passToggle')
 
+  const emailPattern    = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phonePattern    = /^\d{10}$/;
+  const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
 
-form.addEventListener('submit', e => {
-  e.preventDefault();
+  // Toggle show/hide for each password
+  passToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const input = toggle.previousElementSibling;
+      const isPwd = input.type === 'password';
+      input.type = isPwd ? 'text' : 'password';
+      toggle.classList.toggle('fa-eye');
+      toggle.classList.toggle('fa-eye-slash');
+      toggle.title =isPwd ? 'Hide Password' : 'Show Password';
+    });
+  });
 
-  validateInputs();
+  // On Form Submit
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    clearMessages();
+
+    const email           = form.email.value.trim();
+    const phone           = form.phoneNumber.value.trim();
+    const password        = form.password.value;
+    const confirmPassword = form.confirmPassword.value;
+
+    let isValid = true;
+
+    if (!emailPattern.test(email)) {
+      showMessage('email', 'Enter a valid email address.');
+      isValid = false;
+    }
+    if (!phonePattern.test(phone)) {
+      showMessage('phone', 'Phone number must be exactly 10 digits.');
+      isValid = false;
+    }
+    if (!passwordPattern.test(password)) {
+      showMessage('password', 'Password must be at least 6 chars, include uppercase, lowercase, and a number.');
+      isValid = false;
+    }
+    if (password !== confirmPassword) {
+      showMessage('confirmPassword', 'Passwords do not match.');
+      isValid = false;
+    }
+
+    if (isValid) {
+      formMsg.textContent = 'Form submitted successfully!';
+      formMsg.style.color = 'green';
+      form.reset();
+      passToggles.forEach(toggle => {
+        toggle.classList.remove('fa-eye-slash');
+        toggle.classList.add('fa-eye');
+        toggle.title = 'Show Password';
+      });
+    } else {
+      formMsg.textContent = 'Please fix the errors above.';
+      formMsg.style.color = 'red';
+    }
+  });
+
+  // Show error in the corresponding .messages div
+  function showMessage(fieldName, msg) {
+    const inputControl = document.getElementById(fieldName).closest('.inputControl');
+    const msgDiv       = inputControl.querySelector('.messages');
+    msgDiv.textContent = msg;
+    msgDiv.style.color = 'red';
+  }
+
+  // Clear all messages
+  function clearMessages() {
+    document.querySelectorAll('.messages').forEach(div => div.textContent = '');
+    formMsg.textContent = '';
+  }
 });
-
-const validateEmail = (email) => {
-  const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return regex.test(String(email).toLowerCase());
-};
-
-const setError = (element, mesage) => {
-const inputControl = element.parentElement;
-  const errorDisplay = inputControl.querySelector('.error');
-
-  errorDisplay.innerText = mesage;
-  inputControl.classList.add('error');
-  inputControl.classList.remove('success');
-}
-
-const setSuccess = element => {
-  const inputControl = element.parentElement;
-  const errorDisplay = inputControl.querySelector('.error');
-
-  errorDisplay.innerText = '';
-  inputControl.classList.add('success');
-  inputControl.classList.remove('error');
-}
-
-const validateInputs = () => {
-  const emailValue = email.value.trim();
-  const phoneValue = phone.value.trim();
-  const passValue = pass.value.trim();
-  const confirmValue = confirm.value.trim();
-
-  if (emailValue === '') {
-    setError(email, 'Email is empty')
-  } else if (!validateEmail(emailValue)) {
-    setError(email, 'Email is not valid')
-  } else {
-    setSuccess(email)
-  }
-  if (phoneValue === '') {
-    setError(phone, 'Phone Number is empty')
-  } else if (Number.isInteger(Number(phoneValue)) === false){
-    setError(phone, 'Phone Number is not valid')
-  } else {
-    setSuccess(phone)
-  }
-  if (passValue === '') {
-    setError(pass, 'Password is empty.')
-  } else if(passValue.length < 8){
-    setError(pass, 'Password must be at least 8 characters')
-  } else {
-    setSuccess(pass);
-  }
-  if (confirmValue === '') {
-    setError(confirm, 'Confirm Password is empty.')
-  } else if(confirmValue !== passValue){
-    setError(confirm, 'Password does not match')
-  } else {
-    setSuccess(confirm);
-  }
-}
