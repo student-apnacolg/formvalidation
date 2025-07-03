@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
       isValid = false;
     }
     if (phone.length != '10') {
-      showMessage('phone', 'Phone number not valid.');
+      showMessage('phone', 'Phone number is not valid.');
       isValid = false;
     }
     if (!passwordPattern.test(password)) {
