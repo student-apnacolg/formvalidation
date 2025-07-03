@@ -22,7 +22,8 @@
       </div>
       <div class="inputControl">
         <label for="phone">Phone Number</label>
-        <input type="text" name="phoneNumber" id="phone" maxlength="10" pattern="\\d{10}" required>
+        <input type="text" pattern="\d*" maxlength="10" oninput="this.value = this.value.replace(/\D/g, '').slice(0,10);"
+          name="phoneNumber" id="phone" required>
         <div class="messages"></div>
       </div>
       <div class="inputControl passWrapper">

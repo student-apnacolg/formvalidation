@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const passToggles = document.querySelectorAll('.passToggle')
 
   const emailPattern    = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const phonePattern    = /^\d{10}$/;
   const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
 
   // Toggle show/hide for each password
@@ -35,8 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
       showMessage('email', 'Enter a valid email address.');
       isValid = false;
     }
-    if (!phonePattern.test(phone)) {
-      showMessage('phone', 'Phone number must be exactly 10 digits.');
+    if (phone.length != '10') {
+      showMessage('phone', 'Phone number not valid.');
       isValid = false;
     }
     if (!passwordPattern.test(password)) {
