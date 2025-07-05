@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
       isValid = false;
     }
     if (!passwordPattern.test(password)) {
-      showMessage('password', 'Password must be at least 6 chars, include uppercase, lowercase, and a number.');
+      showMessage('password', 'Password must be at least 8 characters, including uppercase, lowercase, special character, and a number.');
       isValid = false;
     }
     if (password !== confirmPassword) {
