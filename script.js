@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const passToggles = document.querySelectorAll('.passToggle')
 
   const emailPattern    = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
+  const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
+
 
   // Toggle show/hide for each password
   passToggles.forEach(toggle => {
